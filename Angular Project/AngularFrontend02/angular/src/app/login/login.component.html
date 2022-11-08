@@ -1,0 +1,67 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example13">Email address</label>
+            <input
+              type="email"
+              name="email"
+              ngModel
+              #email="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              class="form-control form-control-lg"
+              required
+            />
+            <div *ngIf="email.touched">
+              <p class="error" *ngIf="email.errors?.['required']">
+                Your Email is required *
+              </p>
+              <p class="error" *ngIf="email.errors?.['pattern']">
+                 Enter a valid email!!!
+              </p>
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example23">Password</label>
+
+            <input
+              required
+              #password="ngModel"
+              [(ngModel)]="user.password"
+              type="password"
+              name="password"
+              class="form-control form-control-lg"
+              minlength="3"
+              maxlength="8"
+            />
+            <span class="error" *ngIf="password.invalid && password.touched"
+              >Password is required *</span
+            >
+          </div>
+
+        
+          <!-- Submit button -->
+          <button
+            type="submit"
+            class="btn btn-warning btn-lg btn-block"
+            [disabled]="loginForm.invalid"
+          >
+            Log in
+          </button>
+          <div class="d-flex justify-content-around align-items-center m-5">
+            <!-- Checkbox -->
+            <div class="form-check"></div>
+            Do not have account?
+            <a routerLink="/register">Signup Here</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,123 @@
+<div class="text mt-3 mr-3">
+  <button type="button" class="btn btn-warning" (click)="openPopup()">
+    Edit User Data</button
+  >&nbsp;
+  <button class="btn btn-dark" (click)="handleLogout()">LOGOUT</button>
+</div>
+<br /><br /><br /><br />
+
+<div class="">
+  <div class="box">
+    <h2></h2>
+    <p>
+      <br/>
+      <i
+        ><b>
+          welcome
+          {{ loggedinUser.first_name + " " + loggedinUser.last_name }}
+        </b></i
+      >
+    </p>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form #updateForm="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="exampleInputName"> First Name</label>
+                <input
+                  required
+                  [(ngModel)]="user.first_name"
+                  name="first_name"
+                  type="text"
+                  class="form-control"
+                />
+                <label for="exampleInputName"> Address </label>
+                <input
+                  required
+                  [(ngModel)]="user.address.add_line1"
+                  name="add_line1"
+                  type="text"
+                  class="form-control"
+                />
+                <label for="exampleInputName"> State</label>
+                <input
+                  required
+                  [(ngModel)]="user.address.state"
+                  name="state"
+                  type="text"
+                  class="form-control"
+                />
+                <label for="exampleInputName"> Mobile</label>
+                <input
+                  required
+                  [(ngModel)]="user.mobile"
+                  name="mobile"
+                  type="text"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-6 ml-auto">
+                <label for="exampleInputName"> Last Name</label>
+                <input
+                  required
+                  [(ngModel)]="user.last_name"
+                  name="last_name"
+                  type="text"
+                  class="form-control"
+                />
+                <label for="exampleInputName"> Sub Address</label>
+                <input
+                  required
+                  [(ngModel)]="user.address.add_line2"
+                  name="add_line2"
+                  type="text"
+                  class="form-control"
+                />
+                <label for="exampleInputName"> City</label>
+                <input
+                  required
+                  [(ngModel)]="user.address.city"
+                  name="city"
+                  type="text"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <label for="exampleInputName"> email</label>
+            <input
+              required
+              [(ngModel)]="user.email"
+              name="email"
+              type="email"
+              class="form-control"
+              readonly
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="model-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="handleUpdate(updateForm.value)"
+        >
+          Edit and save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
